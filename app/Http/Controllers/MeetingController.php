@@ -2,10 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MeetingRequest;
 use Illuminate\Http\Request;
 
 class MeetingController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('log')->only(['store','update']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +20,7 @@ class MeetingController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json([],);
     }
 
     /**
@@ -22,9 +29,23 @@ class MeetingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MeetingRequest $request)
     {
-        return 'Hello this is a testing';
+        $meeting = [
+            'title' => $request->title,
+            'description' => $request->description,
+            'user_id' => $request->user_id,
+            'time' => $request->time,
+            'id' => 5
+        ];
+
+        $response = [
+            'message' => 'Meeting created',
+            'meeting' => $meeting,
+            "status" => true
+        ];
+
+        return response()->json($response,201);
     }
 
     /**
@@ -33,9 +54,23 @@ class MeetingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        //
+        $meeting = [
+            'title' => $request->title,
+            'description' => $request->description,
+            'user_id' => $request->user_id,
+            'time' => $request->time,
+            'id' => 5
+        ];
+
+        $response = [
+            'message' => '',
+            'meeting' => $meeting,
+            "status" => true
+        ];
+
+        return response()->json($response,200);
     }
 
     /**
@@ -47,7 +82,21 @@ class MeetingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $meeting = [
+            'title' => $request->title,
+            'description' => $request->description,
+            'user_id' => $request->user_id,
+            'time' => $request->time,
+            'id' => $id
+        ];
+
+        $response = [
+            'message' => 'Meeting Updated',
+            'meeting' => $meeting,
+            "status" => true
+        ];
+
+        return response()->json($response,200);
     }
 
     /**
@@ -58,7 +107,11 @@ class MeetingController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $response = [
+            'message' => 'Meeting deleted',
+            "status" => true
+        ];
+        return response()->json($response,200);
     }
 
     public function getParticipants(Request $request){
