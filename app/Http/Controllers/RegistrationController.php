@@ -15,6 +15,12 @@ class RegistrationController extends Controller
      */
     public function store(Request $request)
     {
+        // where condition, that will check the records
+        // if
+        // insert the data
+        // by pass code
+
+
         $user = $request->user_id;
         $meeting = $request->meeting_id;
         $response = [

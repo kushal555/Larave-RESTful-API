@@ -25,8 +25,10 @@ class MeetingRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['required',new Uppercase],
-            'description' => ['required','min:100']
+            'title' => ['required'],
+            'description' => ['required','min:20'],
+            'user_id' => 'required|exists:users,id',
+            'time'=> 'required|date_format:Y-m-d H:i'
         ];
     }
 
