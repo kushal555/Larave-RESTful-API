@@ -2,10 +2,9 @@
 
 namespace App\Http\Requests;
 
-use App\Rules\Uppercase;
 use Illuminate\Foundation\Http\FormRequest;
 
-class MeetingRequest extends FormRequest
+class RegisterUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,17 +24,9 @@ class MeetingRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['required'],
-            'description' => ['required','min:20'],
-            'time'=> 'required|date_format:Y-m-d H:i'
+            'name' => 'required|max:100|min:3',
+            'email' => 'required|email|min:8|max:50|unique:users,email',
+            'password' => 'required|min:8|max:50|confirmed'
         ];
-    }
-
-    /**
-     *  Customise the Error message for rules
-     */
-    public function messages()
-    {
-        return ['title.required' => 'Title is required'];
     }
 }

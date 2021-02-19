@@ -27,6 +27,17 @@ class Meeting extends Model
         'time' => 'datetime:Y-m-d',
     ];
 
+
+    /**
+     * Meeting Owner
+     */
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
+    /**
+     *  Participents
+     */
     public function users(){
         return $this->belongsToMany(User::class);
     }

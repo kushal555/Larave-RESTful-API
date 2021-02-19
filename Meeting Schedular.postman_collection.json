@@ -1,0 +1,314 @@
+{
+	"info": {
+		"_postman_id": "4f28150a-c101-4f21-89a5-fb2b7b4f53cf",
+		"name": "Meeting Schedular",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Meeting",
+			"item": [
+				{
+					"name": "Create Meeting",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNTRkMmZmZjU1ZmY5NjI1MGYxNmFmNzEyODcyYTZiZjVkNDE0OTEzNzM0NjRjNjViZDVhMTJjNWFkMGJhYjBmY2JiMzdhNjI3ZDgzNzM2YWIiLCJpYXQiOiIxNjEzNzE1MjEzLjg2MjUxOSIsIm5iZiI6IjE2MTM3MTUyMTMuODYyNTMxIiwiZXhwIjoiMTY0NTI1MTIxMy44NTE4MDQiLCJzdWIiOiIxNyIsInNjb3BlcyI6W119.uAtcOIJEXerkNC1GfRSyzZMhXVw59J0rMFQ6S0hObBAGC0mDb1jkbjCjvoTaCQ9jnzP3DTZeTJ3qAcFt1lsLKiv6sG_0qibU1ALcKGaclTVki6avXusKnM9ITqoMofKhfZTi1Xjp_NfT65u39M_47ruBknAbxWnnKwkdUO7echXV8LdKma0WIljmi6svrBXrxZlSVSgCvylFTUg56WZG61PG1-Hz8pGw8QN-QH8_w3NeWgOGsLRQfZYC9EO3HfXHzucr66JiyXBNZCjlsyEpVWYbA8MuEJKHa5mGkXjvEfcywlIRlQiSHj3Y0SE12EVnnMJsJ3Q7E4W4k87eJhFDM8OYjJaLgukBlzQN19wSV7jCR4-8eq8mRucUf4_HJWn2Lbi3igFxnosLzysZ7ujWWdMtE7SmU41I--fidGfytmMs5OzBQBZsWK-_a4-eEWu1g34IlOgnwpHd3AXjyZopqKoHBfqPuXiFw9DsqqnpDKky10gtnLHn62seB5SB2-3DenDdC-gk_QIWoH3o5GyyBbR_RlmTOjujZIEWSssAS1kZ4ynefWKGvwsZS43PM20Opy8c-gmz3D93PZ-iYwK1XYGNkc9qjHQa-Wq5VPNWlLe1bZnmYEmh-aPDAYiYEWHKI-laHVFt0Zg7qUPoD-T73UJW0n1sHKoxZBpFmtYJAtE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\" : \"Laravel Training 1\",\r\n    \"description\" : \"We are going to have the Laravel training\",\r\n    \"time\": \"2021-02-17 10:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/meeting",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"meeting"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Meeting",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/meeting/5",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"meeting",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Meetings",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/meeting",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"meeting"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Meeting",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\" : \"Laravel Training 5\",\r\n    \"description\" : \"We are going to have the Laravel training\",\r\n    \"time\": \"2021-02-17 10:00\",\r\n    \"user_id\" : 6\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/meeting/5",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"meeting",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Meeting",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/meeting/5",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"meeting",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Kushal Suthar\",\r\n    \"email\": \"kushalsuthar1@example.com\",\r\n    \"password\": \"12345678\",\r\n    \"password_confirmation\" : \"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/user/register",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/user/15",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"15"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Kushal Kumar\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/user/15",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"15"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

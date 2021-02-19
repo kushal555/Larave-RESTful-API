@@ -33,7 +33,15 @@ class MeetingController extends Controller
     public function store(MeetingRequest $request)
     {
 
-        $meeting = Meeting::create($request->all());
+
+        $meeting = $request->user()->meeting()->create($request->all());
+
+        // $meeting = new Meeting();
+        // $meeting->title = $request->title;
+        // $meeting->description = $request->description;
+        // $meeting->time = $request->time;
+        // $meeting->user_id = $request->user()->id;
+        // $meeting->save();
 
         $response = [
             'message' => 'Meeting created',
