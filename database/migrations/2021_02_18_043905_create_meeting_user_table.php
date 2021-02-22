@@ -17,7 +17,7 @@ class CreateMeetingUserTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('meeting_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
-            $table->boolean('is_active')->default(false);
+            $table->boolean('is_active')->default(false)->comment('');
             $table->timestamps();
         });
     }

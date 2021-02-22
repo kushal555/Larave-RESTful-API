@@ -5,12 +5,29 @@ namespace App\Http\Controllers;
 use App\Http\Requests\RegisterUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
 
     public function login(Request $request){
+        $loginData = $request->validate([
+            'email' =>  'required|email',
+            'password'  =>  'required'
+        ]);
+        // Check for User Model for Email and Password
+        // $user = User::where(['email' => $loginData['email']], [ "password" => Hash::make($loginData['password'])])->first();
+        if(!auth()->attempt($loginData)){
+            return response()->json(['message' => __('auth.failed')],403);
+        }
+
+        $response = [
+            'user' => auth()->user(),
+            'access_token' => auth()->user()->createToken('authToken')->accessToken
+        ];
+
+        return response()->json($response,200);
 
     }
 

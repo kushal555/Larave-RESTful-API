@@ -26,7 +26,9 @@ class MeetingFactory extends Factory
             'title' => $this->faker->sentence(5),
             'description' => $this->faker->text,
             'time' => $this->faker->dateTime,
-            'user_id' => User::factory()->create()->id
+            'user_id' => User::all()->random()->id,
+            'created_at'    =>  now(),
+            'updated_at'   => now()
         ];
     }
 }

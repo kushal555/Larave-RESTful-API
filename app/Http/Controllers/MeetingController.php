@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\MeetingRequest;
+use App\Http\Resources\MeetingCollection;
+use App\Http\Resources\MeetingResource;
 use App\Models\Meeting;
 use Illuminate\Http\Request;
 
@@ -21,7 +23,8 @@ class MeetingController extends Controller
      */
     public function index()
     {
-        return response()->json(Meeting::all(),200);
+        // return response()->json(Meeting::all(),200);
+        return new MeetingCollection(Meeting::all());
     }
 
     /**
@@ -32,24 +35,7 @@ class MeetingController extends Controller
      */
     public function store(MeetingRequest $request)
     {
-
-
-        $meeting = $request->user()->meeting()->create($request->all());
-
-        // $meeting = new Meeting();
-        // $meeting->title = $request->title;
-        // $meeting->description = $request->description;
-        // $meeting->time = $request->time;
-        // $meeting->user_id = $request->user()->id;
-        // $meeting->save();
-
-        $response = [
-            'message' => 'Meeting created',
-            'meeting' => $meeting,
-            "status" => true
-        ];
-
-        return response()->json($response,201);
+        return new MeetingResource($request->user()->meeting()->create($request->all()));
     }
 
     /**
@@ -60,14 +46,7 @@ class MeetingController extends Controller
      */
     public function show(Request $request, Meeting $meeting)
     {
-
-        $response = [
-            'message' => '',
-            'meeting' => $meeting,
-            "status" => true
-        ];
-
-        return response()->json($response,200);
+        return new MeetingResource($meeting);
     }
 
     /**
@@ -86,13 +65,7 @@ class MeetingController extends Controller
         $meeting->user_id = $request->user_id;
         $meeting->save();
 
-        $response = [
-            'message' => 'Meeting Updated',
-            'meeting' => $meeting,
-            "status" => true
-        ];
-
-        return response()->json($response,200);
+        return new MeetingResource($meeting);
     }
 
     /**
@@ -104,11 +77,7 @@ class MeetingController extends Controller
     public function destroy(Meeting $meeting)
     {
         $meeting->delete();
-        $response = [
-            'message' => 'Meeting deleted',
-            "status" => true
-        ];
-        return response()->json($response,200);
+        return new MeetingResource($meeting);
     }
 
     public function getParticipants(Request $request){
